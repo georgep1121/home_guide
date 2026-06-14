@@ -1,9 +1,7 @@
 const appEl = document.getElementById("app");
-const searchEl = document.getElementById("search");
 
 let activePost = null;
 let scrollPosition = 0;
-let searchQuery = "";
 
 /* DATA */
 const posts = [
@@ -21,20 +19,11 @@ const posts = [
   { title: "Sewage & Wastewater", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wastewater and sewage infrastructure system." }
 ];
 
-/* FILTERED POSTS */
-function getFilteredPosts() {
-  return posts.filter(p =>
-    p.title.toLowerCase().includes(searchQuery.toLowerCase())
-  );
-}
-
 /* LIST VIEW */
 function renderList() {
   appEl.innerHTML = "";
 
-  const list = getFilteredPosts();
-
-  list.forEach((post, index) => {
+  posts.forEach((post) => {
     const div = document.createElement("div");
     div.className = "card";
 
@@ -49,7 +38,7 @@ function renderList() {
     appEl.appendChild(div);
   });
 
-  /* restore scroll */
+  /* restore scroll position */
   requestAnimationFrame(() => {
     window.scrollTo(0, scrollPosition);
   });
@@ -90,11 +79,5 @@ function render() {
     renderList();
   }
 }
-
-/* SEARCH */
-searchEl.addEventListener("input", (e) => {
-  searchQuery = e.target.value;
-  if (!activePost) render();
-});
 
 render();
