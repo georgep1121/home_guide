@@ -5,18 +5,27 @@ let θέσηScroll = 0;
 
 /* ΔΕΔΟΜΕΝΑ */
 const ποστ = [
-  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Περιγραφή κύριας εισόδου και λειτουργίας." },
-  { τίτλος: "Μπροστινή Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Διάταξη και σχεδιασμός μπροστινής αυλής." },
-  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Χρήση και οργάνωση πίσω αυλής." },
-  { τίτλος: "Πίσω Βεράντα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Σχεδιασμός εξωτερικού καθιστικού χώρου." },
-  { τίτλος: "Κάτω Πίσω Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ροή πρόσβασης στο κάτω επίπεδο." },
-  { τίτλος: "Κάτω Σαλόνι", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Διάταξη και λειτουργία σαλονιού." },
-  { τίτλος: "Εσωτερική Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Κατακόρυφη σύνδεση ορόφων." },
-  { τίτλος: "Άνω Διάδρομος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Κυκλοφορία στον άνω όροφο." },
-  { τίτλος: "Κύρια Κρεβατοκάμαρα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Άνεση και διάταξη χώρου ύπνου." },
-  { τίτλος: "Άνω Σαλόνι", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Χώρος χαλάρωσης στον άνω όροφο." },
-  { τίτλος: "Μπροστινή Είσοδος Ορόφου", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Πρόσβαση και αρχιτεκτονική ορόφου." },
-  { τίτλος: "Αποχέτευση & Λύματα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Υποδομές αποχέτευσης και διαχείρισης υδάτων." }
+  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Εμπρός Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Ισόγεια Κεραμοσκεπή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Κάτω Πίσω Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Κάτω Είσοδος & Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Κάτω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Κάτω Κουζίνα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Αποθήκη Κουζίνας", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Κάτω Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Κάτω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Εσωτερική Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Ηλεκτρικός Πίνακας", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Κύριο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.." },
+  { τίτλος: "Επάνω Δεύτερο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Πίνακας Καλοριφέρ", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Επάνω Εμπρός Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
+  { τίτλος: "Αποχέτευση & Λύματα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
 ];
 
 /* ΛΙΣΤΑ */
@@ -38,7 +47,7 @@ function εμφάνισεΛίστα() {
     appEl.appendChild(div);
   });
 
-  /* επαναφορά scroll */
+  /* restore scroll */
   requestAnimationFrame(() => {
     window.scrollTo(0, θέσηScroll);
   });
