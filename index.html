@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <title>Home Guide</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Blog</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
 
-  <div id="menu"></div>
-  <div id="app">Loading...</div>
+  <header class="header">
+    <h1>Blog</h1>
+
+    <nav id="categories" class="categories"></nav>
+  </header>
+
+  <main id="posts" class="posts"></main>
 
   <script src="app.js"></script>
-
 </body>
 </html>
