@@ -1,67 +1,72 @@
-const categoriesEl = document.getElementById("categories");
 const appEl = document.getElementById("app");
 
-let data = null;
-let activeCategory = "All";
+let posts = [];
 let activePost = null;
 
-/* RENDER CATEGORIES */
-function renderCategories() {
-  categoriesEl.innerHTML = "";
-
-  // ALL button first
-  const allBtn = document.createElement("button");
-  allBtn.className = "category-btn" + (activeCategory === "All" ? " active" : "");
-  allBtn.textContent = "All";
-
-  allBtn.onclick = () => {
-    activeCategory = "All";
-    activePost = null;
-    render();
-  };
-
-  categoriesEl.appendChild(allBtn);
-
-  // other categories in fixed order
-  data.categories.forEach(cat => {
-    const btn = document.createElement("button");
-    btn.className = "category-btn" + (activeCategory === cat.name ? " active" : "");
-    btn.textContent = cat.name;
-
-    btn.onclick = () => {
-      activeCategory = cat.name;
-      activePost = null;
-      render();
-    };
-
-    categoriesEl.appendChild(btn);
-  });
-}
-
-/* GET POSTS BASED ON CATEGORY */
-function getPosts() {
-  if (activeCategory === "All") {
-    return data.categories.flatMap(cat => cat.posts);
+/* fixed order dataset */
+posts = [
+  {
+    title: "Main Entrance",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Main entrance overview and layout."
+  },
+  {
+    title: "Front Yard",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Front yard design and structure."
+  },
+  {
+    title: "Rear Yard",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rear yard planning and usage."
+  },
+  {
+    title: "Rear Patio",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rear patio functional space design."
+  },
+  {
+    title: "Rear Lower Entrance",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lower rear access and circulation."
+  },
+  {
+    title: "Lower Living Room",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lower level living room arrangement."
+  },
+  {
+    title: "Internal Stairs",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Staircase flow and vertical connection."
+  },
+  {
+    title: "Upper Hall",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Upper hall circulation space."
+  },
+  {
+    title: "Upper Master Bedroom",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Master bedroom layout and comfort."
+  },
+  {
+    title: "Upper Living Room",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Upper living area design concept."
+  },
+  {
+    title: "Upper Front Entrance",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Upper front access point design."
+  },
+  {
+    title: "Sewage & Wastewater",
+    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wastewater and sewage infrastructure system."
   }
+];
 
-  const category = data.categories.find(c => c.name === activeCategory);
-  return category ? category.posts : [];
-}
-
-/* RENDER LIST VIEW */
-function renderListView() {
+/* render list */
+function renderList() {
   appEl.innerHTML = "";
 
-  const posts = getPosts();
-
-  posts.forEach(post => {
+  posts.forEach((post, index) => {
     const div = document.createElement("div");
     div.className = "card";
 
     div.innerHTML = `<h2>${post.title}</h2>`;
 
     div.onclick = () => {
-      activePost = post;
+      activePost = index;
       render();
     };
 
@@ -69,16 +74,18 @@ function renderListView() {
   });
 }
 
-/* RENDER POST VIEW */
-function renderPostView() {
+/* render post */
+function renderPost() {
   appEl.innerHTML = "";
+
+  const post = posts[activePost];
 
   const div = document.createElement("div");
   div.className = "post-view";
 
   div.innerHTML = `
-    <h2>${activePost.title}</h2>
-    <p>${activePost.content}</p>
+    <h2>${post.title}</h2>
+    <p>${post.content}</p>
   `;
 
   const back = document.createElement("button");
@@ -94,21 +101,13 @@ function renderPostView() {
   appEl.appendChild(div);
 }
 
-/* MAIN RENDER */
+/* main render */
 function render() {
-  renderCategories();
-
-  if (activePost) {
-    renderPostView();
+  if (activePost === null) {
+    renderList();
   } else {
-    renderListView();
+    renderPost();
   }
 }
 
-/* LOAD DATA */
-fetch("data.json")
-  .then(res => res.json())
-  .then(json => {
-    data = json;
-    render();
-  });
+render();
