@@ -1,7 +1,12 @@
-let DATA;
+let DATA = null;
+
+const state = {
+  category: null,
+  post: null
+};
 
 async function init() {
-  const res = await fetch("./data.json?cache=" + Date.now());
+  const res = await fetch("./data.json");
   DATA = await res.json();
 
   renderMenu();
@@ -13,13 +18,13 @@ function renderMenu() {
   menu.innerHTML = "";
 
   DATA.categories.forEach((c, i) => {
-    const span = document.createElement("span");
-    span.textContent = c.title;
-    span.style.cursor = "pointer";
+    const el = document.createElement("span");
+    el.textContent = c.title;
+    el.style.cursor = "pointer";
 
-    span.onclick = () => showCategory(c);
+    el.onclick = () => showCategory(c);
 
-    menu.appendChild(span);
+    menu.appendChild(el);
 
     if (i < DATA.categories.length - 1) {
       menu.appendChild(document.createTextNode(" | "));
@@ -28,6 +33,9 @@ function renderMenu() {
 }
 
 function showCategory(cat) {
+  state.category = cat;
+  state.post = null;
+
   const app = document.getElementById("app");
   app.innerHTML = "";
 
@@ -35,27 +43,43 @@ function showCategory(cat) {
   h.textContent = cat.title;
   app.appendChild(h);
 
-  cat.posts.forEach(p => {
+  if (!cat.posts.length) {
+    const empty = document.createElement("p");
+    empty.textContent = "No posts";
+    app.appendChild(empty);
+    return;
+  }
+
+  cat.posts.forEach((p) => {
     const div = document.createElement("div");
     div.textContent = p.title;
-    div.style.color = "blue";
     div.style.cursor = "pointer";
 
-    div.onclick = () => showPost(p, cat);
+    div.onclick = () => showPost(p);
 
     app.appendChild(div);
   });
 }
 
-function showPost(post, cat) {
+function showPost(post) {
+  state.post = post;
+
   const app = document.getElementById("app");
   app.innerHTML = "";
 
-  app.innerHTML = `
-    <h1>${post.title}</h1>
-    <p>${post.content}</p>
-    <button onclick="location.reload()">Back</button>
-  `;
+  const h = document.createElement("h1");
+  h.textContent = post.title;
+
+  const p = document.createElement("p");
+  p.textContent = post.content;
+
+  const back = document.createElement("button");
+  back.textContent = "Back";
+  back.onclick = () => showCategory(state.category);
+
+  app.appendChild(h);
+  app.appendChild(p);
+  app.appendChild(back);
 }
 
 init();
