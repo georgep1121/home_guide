@@ -33,6 +33,12 @@ body {
   cursor: pointer;
 }
 
+.category-btn.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
 .app {
   padding: 16px;
 }
