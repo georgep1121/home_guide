@@ -15,6 +15,26 @@
       "id": "grounds",
       "title": "Grounds",
       "posts": []
+    },
+    {
+      "id": "lower-level",
+      "title": "Lower Level",
+      "posts": []
+    },
+    {
+      "id": "upper-level",
+      "title": "Upper Level",
+      "posts": []
+    },
+    {
+      "id": "outbuildings",
+      "title": "Outbuildings",
+      "posts": []
+    },
+    {
+      "id": "infrastructure",
+      "title": "Infrastructure",
+      "posts": []
     }
   ]
 }
