@@ -1,86 +1,24 @@
 {
-  "categories": [
+  "posts": [
     {
-      "id": "overview",
-      "title": "Overview",
-      "posts": [
-        {
-          "id": "welcome",
-          "title": "Welcome",
-          "content": "Home system active."
-        }
-      ]
+      "title": "καθαρισμος περιβαλλοντος ? οδηγιες",
+      "category": "περιβαλλον χωρος",
+      "content": "το περιβαλλον χρειαζεται φροντιδα και καθημερινη συντηρηση"
     },
     {
-      "id": "grounds",
-      "title": "Grounds",
-      "posts": [
-        { "id": "main-entrance", "title": "Main Entrance", "content": "" },
-        { "id": "front-and-side-yard", "title": "Front and Side Yard", "content": "" },
-        { "id": "front-external-stairs", "title": "Front External Stairs", "content": "" },
-        { "id": "roofed-patio", "title": "Roofed Patio", "content": "" },
-        { "id": "rear-external-stairs", "title": "Rear External Stairs", "content": "" },
-        { "id": "rear-yard", "title": "Rear Yard", "content": "" },
-        { "id": "rear-garden", "title": "Rear Garden", "content": "" }
-      ]
+      "title": "αστικες υποδομες εξελιξη",
+      "category": "υποδομες",
+      "content": "οι υποδομες της πολης αναβαθμιζονται σταδιακα"
     },
     {
-      "id": "lower-level",
-      "title": "Lower Level",
-      "posts": [
-        { "id": "entrance-hallway", "title": "Entrance Hallway", "content": "" },
-        { "id": "lower-living-room", "title": "Lower Living Room", "content": "" },
-        { "id": "wifi-access-point", "title": "Wi-Fi Access Point", "content": "" },
-        { "id": "lower-electrical-panel", "title": "Lower Electrical Panel", "content": "" },
-        { "id": "lower-kitchen", "title": "Lower Kitchen", "content": "" },
-        { "id": "kitchen-appliances", "title": "Kitchen Appliances", "content": "" },
-        { "id": "kitchen-pantry", "title": "Kitchen Pantry", "content": "" },
-        { "id": "lower-heating-panel", "title": "Lower Heating Panel", "content": "" },
-        { "id": "lower-bathroom", "title": "Lower Bathroom", "content": "" },
-        { "id": "lower-bedroom-with-wardrobe", "title": "Lower Bedroom with Wardrobe", "content": "" },
-        { "id": "internal-stairs-with-landing", "title": "Internal Stairs with Landing", "content": "" }
-      ]
+      "title": "εσωτερικος χωρος κατω επιπεδο",
+      "category": "κατω επιπεδο",
+      "content": "το κατω επιπεδο περιλαμβανει βασικες λειτουργιες και αποθηκευση"
     },
     {
-      "id": "upper-level",
-      "title": "Upper Level",
-      "posts": [
-        { "id": "upper-entrance-hall", "title": "Upper Entrance Hall", "content": "" },
-        { "id": "upper-electrical-panel", "title": "Upper Electrical Panel", "content": "" },
-        { "id": "master-bedroom-with-wardrobe", "title": "Master Bedroom with Wardrobe", "content": "" },
-        { "id": "master-bedroom-balcony", "title": "Master Bedroom Balcony", "content": "" },
-        { "id": "upper-second-bedroom", "title": "Upper Second Bedroom", "content": "" },
-        { "id": "upper-bathroom", "title": "Upper Bathroom", "content": "" },
-        { "id": "upper-heating-panel", "title": "Upper Heating Panel", "content": "" },
-        { "id": "upper-living-room", "title": "Upper Living Room", "content": "" },
-        { "id": "lan-gateway", "title": "LAN Gateway", "content": "" }
-      ]
-    },
-    {
-      "id": "outbuildings",
-      "title": "Outbuildings",
-      "posts": [
-        { "id": "electricity-meter-enclosure", "title": "Electricity Meter Enclosure", "content": "" },
-        { "id": "water-meter-enclosure", "title": "Water Meter Enclosure", "content": "" },
-        { "id": "construction-materials-storage", "title": "Construction Materials Storage", "content": "" },
-        { "id": "boiler-room", "title": "Boiler Room", "content": "" },
-        { "id": "single-car-garage", "title": "Single-Car Garage", "content": "" },
-        { "id": "covered-outdoor-dining-area", "title": "Covered Outdoor Dining Area", "content": "" },
-        { "id": "outdoor-kitchen", "title": "Outdoor Kitchen", "content": "" },
-        { "id": "utility-storage-room", "title": "Utility Storage Room", "content": "" }
-      ]
-    },
-    {
-      "id": "infrastructure",
-      "title": "Infrastructure",
-      "posts": [
-        { "id": "stormwater-drainage", "title": "Stormwater Drainage", "content": "" },
-        { "id": "sewage-and-wastewater", "title": "Sewage and Wastewater", "content": "" },
-        { "id": "fencing-system", "title": "Fencing System", "content": "" },
-        { "id": "automatic-irrigation", "title": "Automatic Irrigation", "content": "" },
-        { "id": "landscape-maintenance", "title": "Landscape Maintenance", "content": "" },
-        { "id": "municipal-waste-bins", "title": "Municipal Waste Bins", "content": "" }
-      ]
+      "title": "επανω επιπεδο design συστημα",
+      "category": "επανω επιπεδο",
+      "content": "το επανω επιπεδο ειναι υπευθυνο για την εμπειρια χρηστη"
     }
   ]
 }
