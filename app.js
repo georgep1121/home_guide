@@ -1,3 +1,12 @@
+const MENU_ITEMS = [
+  "Overview",
+  "Grounds",
+  "Lower Level",
+  "Upper Level",
+  "Outbuildings",
+  "Infrastructure"
+];
+
 let DATA = null;
 
 const state = {
@@ -10,47 +19,60 @@ async function init() {
   DATA = await res.json();
 
   renderMenu();
-  showCategory(DATA.categories[0]);
+  showCategoryByTitle("Overview");
 }
 
 function renderMenu() {
   const menu = document.getElementById("menu");
   menu.innerHTML = "";
 
-  DATA.categories.forEach((c, i) => {
+  MENU_ITEMS.forEach((title, i) => {
     const el = document.createElement("span");
-    el.textContent = c.title;
+    el.textContent = title;
     el.style.cursor = "pointer";
 
-    el.onclick = () => showCategory(c);
+    el.onclick = () => showCategoryByTitle(title);
 
     menu.appendChild(el);
 
-    if (i < DATA.categories.length - 1) {
+    if (i < MENU_ITEMS.length - 1) {
       menu.appendChild(document.createTextNode(" | "));
     }
   });
 }
 
-function showCategory(cat) {
-  state.category = cat;
-  state.post = null;
+function showCategoryByTitle(title) {
+  const cat = DATA.categories.find(c => c.title === title);
 
   const app = document.getElementById("app");
   app.innerHTML = "";
+
+  if (!cat) {
+    state.category = null;
+    state.post = null;
+
+    app.innerHTML = `
+      <h2>${title}</h2>
+      <p>No data found</p>
+    `;
+    return;
+  }
+
+  state.category = cat;
+  state.post = null;
 
   const h = document.createElement("h2");
   h.textContent = cat.title;
   app.appendChild(h);
 
-  if (!cat.posts.length) {
+  if (!cat.posts || cat.posts.length === 0) {
     const empty = document.createElement("p");
-    empty.textContent = "No posts";
+    empty.textContent = "No content";
     app.appendChild(empty);
     return;
   }
 
-  cat.posts.forEach((p) => {
+  cat.posts.forEach(p => {
     const div = document.createElement("div");
     div.textContent = p.title;
     div.style.cursor = "pointer";
@@ -75,7 +97,7 @@ function showPost(post) {
 
   const back = document.createElement("button");
   back.textContent = "Back";
-  back.onclick = () => showCategory(state.category);
+  back.onclick = () => showCategoryByTitle(state.category?.title || "Overview");
 
   app.appendChild(h);
   app.appendChild(p);
