@@ -1,10 +1,10 @@
 const MENU_ITEMS = [
-  "Overview",
-  "Grounds",
-  "Lower Level",
-  "Upper Level",
-  "Outbuildings",
-  "Infrastructure"
+  "overview",
+  "grounds",
+  "lower-level",
+  "upper-level",
+  "outbuildings",
+  "infrastructure"
 ];
 
 let DATA = null;
@@ -19,19 +19,21 @@ async function init() {
   DATA = await res.json();
 
   renderMenu();
-  showCategoryByTitle("Overview");
+  showCategoryById("overview");
 }
 
 function renderMenu() {
   const menu = document.getElementById("menu");
   menu.innerHTML = "";
 
-  MENU_ITEMS.forEach((title, i) => {
+  MENU_ITEMS.forEach((id, i) => {
+    const cat = DATA.categories.find(c => c.id === id);
+
     const el = document.createElement("span");
-    el.textContent = title;
+    el.textContent = cat ? cat.title : id;
     el.style.cursor = "pointer";
 
-    el.onclick = () => showCategoryByTitle(title);
+    el.onclick = () => showCategoryById(id);
 
     menu.appendChild(el);
 
@@ -41,20 +43,14 @@ function renderMenu() {
   });
 }
 
-function showCategoryByTitle(title) {
-  const cat = DATA.categories.find(c => c.title === title);
+function showCategoryById(id) {
+  const cat = DATA.categories.find(c => c.id === id);
 
   const app = document.getElementById("app");
   app.innerHTML = "";
 
   if (!cat) {
-    state.category = null;
-    state.post = null;
-
-    app.innerHTML = `
-      <h2>${title}</h2>
-      <p>No data found</p>
-    `;
+    app.innerHTML = `<h2>${id}</h2><p>No category found</p>`;
     return;
   }
 
@@ -67,7 +63,7 @@ function showCategoryByTitle(title) {
 
   if (!cat.posts || cat.posts.length === 0) {
     const empty = document.createElement("p");
-    empty.textContent = "No content";
+    empty.textContent = "No posts";
     app.appendChild(empty);
     return;
   }
@@ -84,8 +80,6 @@ function showCategoryByTitle(title) {
 }
 
 function showPost(post) {
-  state.post = post;
-
   const app = document.getElementById("app");
   app.innerHTML = "";
 
@@ -93,11 +87,11 @@ function showPost(post) {
   h.textContent = post.title;
 
   const p = document.createElement("p");
-  p.textContent = post.content;
+  p.textContent = post.content || "";
 
   const back = document.createElement("button");
   back.textContent = "Back";
-  back.onclick = () => showCategoryByTitle(state.category?.title || "Overview");
+  back.onclick = () => showCategoryById(state.category.id);
 
   app.appendChild(h);
   app.appendChild(p);
