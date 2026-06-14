@@ -1,24 +1,64 @@
 {
-  "posts": [
+  "categories": [
     {
-      "title": "καθαρισμος περιβαλλοντος ? οδηγιες",
-      "category": "περιβαλλον χωρος",
-      "content": "το περιβαλλον χρειαζεται φροντιδα και καθημερινη συντηρηση"
+      "name": "Yard",
+      "posts": [
+        {
+          "title": "Entrance",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Yard entrance basic layout guide."
+        },
+        {
+          "title": "Front Yard",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Front yard planning and structure."
+        },
+        {
+          "title": "Rear Yard",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rear yard usage and design ideas."
+        }
+      ]
     },
     {
-      "title": "αστικες υποδομες εξελιξη",
-      "category": "υποδομες",
-      "content": "οι υποδομες της πολης αναβαθμιζονται σταδιακα"
+      "name": "Lower",
+      "posts": [
+        {
+          "title": "Entrance",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lower level entrance structure."
+        },
+        {
+          "title": "Living Room",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Living room layout and flow."
+        },
+        {
+          "title": "Kitchen",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Kitchen functionality and design."
+        }
+      ]
     },
     {
-      "title": "εσωτερικος χωρος κατω επιπεδο",
-      "category": "κατω επιπεδο",
-      "content": "το κατω επιπεδο περιλαμβανει βασικες λειτουργιες και αποθηκευση"
+      "name": "Upper",
+      "posts": [
+        {
+          "title": "Master Bedroom",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Master bedroom comfort design."
+        },
+        {
+          "title": "Bedroom",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Bedroom minimal layout concept."
+        }
+      ]
     },
     {
-      "title": "επανω επιπεδο design συστημα",
-      "category": "επανω επιπεδο",
-      "content": "το επανω επιπεδο ειναι υπευθυνο για την εμπειρια χρηστη"
+      "name": "Infra",
+      "posts": [
+        {
+          "title": "Power Supply",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Electrical system overview."
+        },
+        {
+          "title": "Water Supply",
+          "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Water infrastructure routing."
+        }
+      ]
     }
   ]
 }
