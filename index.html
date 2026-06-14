@@ -1,36 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home Manual</title>
 
-  <!-- PWA Manifest -->
-  <link rel="manifest" href="manifest.json">
+  <link rel="manifest" href="./manifest.json">
 
-  <!-- Basic mobile support -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Theme color -->
-  <meta name="theme-color" content="#000000">
+  <style>
+    body { font-family: sans-serif; padding: 10px; }
+    #menu { margin-bottom: 10px; }
+  </style>
 </head>
-
 <body>
 
-  <h1>Home Manual</h1>
+  <div id="menu"></div>
+  <div id="app">Loading...</div>
 
-  <p>System is running...</p>
+  <script src="app.js"></script>
 
-  <!-- Service Worker Registration -->
   <script>
     if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("./service-worker.js")
-        .then(function(registration) {
-          console.log("Service Worker registered ✔", registration);
-        })
-        .catch(function(error) {
-          console.log("Service Worker failed ❌", error);
-        });
+      navigator.serviceWorker.register("./service-worker.js");
     }
   </script>
 
