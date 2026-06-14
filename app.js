@@ -1,101 +1,80 @@
-let DATA;
+const categoriesEl = document.getElementById("categories");
+const postsEl = document.getElementById("posts");
 
-const MENU_ITEMS = [
-  "overview",
-  "grounds",
-  "lower-level",
-  "upper-level",
-  "outbuildings",
-  "infrastructure"
-];
+let allPosts = [];
+let activeCategory = "Ολα";
 
-const state = {
-  category: null,
-  post: null
-};
+/* FORMAT RULE:
+- κάθε λέξη κεφαλαίο πρώτο γράμμα
+- "?" -> "|"
+*/
+function formatText(text) {
+  if (!text) return "";
 
-async function init() {
-  const res = await fetch("./data.json");
-  DATA = await res.json();
-
-  renderMenu();
-  showCategoryById("overview");
+  return text
+    .replace(/\?/g, "|")
+    .toLowerCase()
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
-function renderMenu() {
-  const menu = document.getElementById("menu");
-  menu.innerHTML = "";
+/* RENDER CATEGORIES */
+function renderCategories(categories) {
+  categoriesEl.innerHTML = "";
 
-  MENU_ITEMS.forEach((id, i) => {
-    const cat = DATA.categories.find(c => c.id === id);
+  const allBtn = document.createElement("button");
+  allBtn.className = "category-btn";
+  allBtn.textContent = "Ολα";
+  allBtn.onclick = () => {
+    activeCategory = "Ολα";
+    renderPosts();
+  };
+  categoriesEl.appendChild(allBtn);
 
-    const el = document.createElement("span");
-    el.textContent = cat ? cat.title : id;
-    el.style.cursor = "pointer";
+  categories.forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "category-btn";
+    btn.textContent = formatText(cat);
 
-    el.onclick = () => showCategoryById(id);
+    btn.onclick = () => {
+      activeCategory = cat;
+      renderPosts();
+    };
 
-    menu.appendChild(el);
-
-    if (i < MENU_ITEMS.length - 1) {
-      menu.appendChild(document.createTextNode(" | "));
-    }
+    categoriesEl.appendChild(btn);
   });
 }
 
-function showCategoryById(id) {
-  const cat = DATA.categories.find(c => c.id === id);
+/* RENDER POSTS */
+function renderPosts() {
+  postsEl.innerHTML = "";
 
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+  const filtered = activeCategory === "Ολα"
+    ? allPosts
+    : allPosts.filter(p => p.category === activeCategory);
 
-  if (!cat) {
-    app.innerHTML = `<h2>${id}</h2><p>No category found</p>`;
-    return;
-  }
-
-  state.category = cat;
-  state.post = null;
-
-  const h = document.createElement("h2");
-  h.textContent = cat.title;
-  app.appendChild(h);
-
-  if (!cat.posts || cat.posts.length === 0) {
-    const empty = document.createElement("p");
-    empty.textContent = "No posts";
-    app.appendChild(empty);
-    return;
-  }
-
-  cat.posts.forEach(p => {
+  filtered.forEach(post => {
     const div = document.createElement("div");
-    div.textContent = p.title;
-    div.style.cursor = "pointer";
+    div.className = "post";
 
-    div.onclick = () => showPost(p);
+    div.innerHTML = `
+      <h2>${formatText(post.title)}</h2>
+      <p>${formatText(post.content)}</p>
+    `;
 
-    app.appendChild(div);
+    postsEl.appendChild(div);
   });
 }
 
-function showPost(post) {
-  const app = document.getElementById("app");
-  app.innerHTML = "";
+/* LOAD DATA */
+fetch("data.json")
+  .then(res => res.json())
+  .then(data => {
+    allPosts = data.posts;
 
-  const h = document.createElement("h1");
-  h.textContent = post.title;
+    const categories = [...new Set(allPosts.map(p => p.category))];
 
-  const p = document.createElement("p");
-  p.textContent = post.content || "";
-
-  const back = document.createElement("button");
-  back.textContent = "Back";
-  back.onclick = () => showCategoryById(state.category.id);
-
-  app.appendChild(h);
-  app.appendChild(p);
-  app.appendChild(back);
-}
-
-init();
+    renderCategories(categories);
+    renderPosts();
+  });
