@@ -1,39 +1,20 @@
 {
   "categories": [
     {
-      "name": "Infrastructure",
+      "id": "overview",
+      "title": "Overview",
       "posts": [
         {
-          "title": "Stormwater Drainage",
-          "content": "Basic information about stormwater drainage system.",
-          "links": [
-            {
-              "label": "Google Maps",
-              "url": "https://maps.google.com"
-            }
-          ]
-        },
-        {
-          "title": "Sewage and Wastewater",
-          "content": "Overview of wastewater system."
-        },
-        {
-          "title": "Fencing System",
-          "content": "Fencing installation and maintenance."
-        },
-        {
-          "title": "Automatic Irrigation",
-          "content": "Irrigation system controls."
-        },
-        {
-          "title": "Landscape Maintenance",
-          "content": "General landscaping guidelines."
-        },
-        {
-          "title": "Municipal Waste Bins",
-          "content": "Waste management instructions."
+          "id": "welcome",
+          "title": "Welcome",
+          "content": "Home system active."
         }
       ]
+    },
+    {
+      "id": "grounds",
+      "title": "Grounds",
+      "posts": []
     }
   ]
 }
