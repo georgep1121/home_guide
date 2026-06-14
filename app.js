@@ -1,80 +1,92 @@
 const categoriesEl = document.getElementById("categories");
-const postsEl = document.getElementById("posts");
+const appEl = document.getElementById("app");
 
-let allPosts = [];
-let activeCategory = "Ολα";
+let data = null;
+let activeCategory = null;
+let activePost = null;
 
-/* FORMAT RULE:
-- κάθε λέξη κεφαλαίο πρώτο γράμμα
-- "?" -> "|"
-*/
-function formatText(text) {
-  if (!text) return "";
-
-  return text
-    .replace(/\?/g, "|")
-    .toLowerCase()
-    .split(" ")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-}
-
-/* RENDER CATEGORIES */
-function renderCategories(categories) {
+/* Render categories (fixed order) */
+function renderCategories() {
   categoriesEl.innerHTML = "";
 
-  const allBtn = document.createElement("button");
-  allBtn.className = "category-btn";
-  allBtn.textContent = "Ολα";
-  allBtn.onclick = () => {
-    activeCategory = "Ολα";
-    renderPosts();
-  };
-  categoriesEl.appendChild(allBtn);
-
-  categories.forEach(cat => {
+  data.categories.forEach(cat => {
     const btn = document.createElement("button");
     btn.className = "category-btn";
-    btn.textContent = formatText(cat);
+    btn.textContent = cat.name;
 
     btn.onclick = () => {
       activeCategory = cat;
-      renderPosts();
+      activePost = null;
+      render();
     };
 
     categoriesEl.appendChild(btn);
   });
 }
 
-/* RENDER POSTS */
-function renderPosts() {
-  postsEl.innerHTML = "";
+/* Render list of posts in category */
+function renderCategoryView() {
+  appEl.innerHTML = "";
 
-  const filtered = activeCategory === "Ολα"
-    ? allPosts
-    : allPosts.filter(p => p.category === activeCategory);
-
-  filtered.forEach(post => {
+  activeCategory.posts.forEach(post => {
     const div = document.createElement("div");
-    div.className = "post";
+    div.className = "card";
 
-    div.innerHTML = `
-      <h2>${formatText(post.title)}</h2>
-      <p>${formatText(post.content)}</p>
-    `;
+    div.innerHTML = `<h2>${post.title}</h2>`;
 
-    postsEl.appendChild(div);
+    div.onclick = () => {
+      activePost = post;
+      render();
+    };
+
+    appEl.appendChild(div);
   });
 }
 
-/* LOAD DATA */
+/* Render single post */
+function renderPostView() {
+  appEl.innerHTML = "";
+
+  const div = document.createElement("div");
+  div.className = "post-view";
+
+  div.innerHTML = `
+    <h2>${activePost.title}</h2>
+    <p>${activePost.content}</p>
+  `;
+
+  const back = document.createElement("button");
+  back.className = "back-btn";
+  back.textContent = "Back";
+
+  back.onclick = () => {
+    activePost = null;
+    render();
+  };
+
+  div.appendChild(back);
+  appEl.appendChild(div);
+}
+
+/* Main render */
+function render() {
+  if (!activeCategory) {
+    activeCategory = data.categories[0];
+  }
+
+  renderCategories();
+
+  if (activePost) {
+    renderPostView();
+  } else {
+    renderCategoryView();
+  }
+}
+
+/* Load data */
 fetch("data.json")
   .then(res => res.json())
-  .then(data => {
-    allPosts = data.posts;
-
-    const categories = [...new Set(allPosts.map(p => p.category))];
-
-    renderCategories(categories);
-    renderPosts();
+  .then(json => {
+    data = json;
+    render();
   });
