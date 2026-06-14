@@ -14,29 +14,8 @@ body {
 }
 
 .header h1 {
-  margin: 0 0 10px 0;
+  margin: 0;
   font-size: 28px;
-}
-
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.category-btn {
-  padding: 10px 14px;
-  border: 1px solid #ccc;
-  background: #fff;
-  border-radius: 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.category-btn.active {
-  background: #111;
-  color: #fff;
-  border-color: #111;
 }
 
 .app {
