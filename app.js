@@ -1,59 +1,113 @@
 const appEl = document.getElementById("app");
+const searchEl = document.getElementById("search");
 
 let ενεργόΠοστ = null;
 let θέσηScroll = 0;
+let query = "";
 
 /* ΔΕΔΟΜΕΝΑ */
 const ποστ = [
-  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Εμπρός Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Ισόγεια Κεραμοσκεπή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Κάτω Πίσω Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Κάτω Είσοδος & Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Κάτω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Κάτω Κουζίνα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Αποθήκη Κουζίνας", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Κάτω Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Κάτω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Εσωτερική Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Ηλεκτρικός Πίνακας", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Κύριο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.." },
-  { τίτλος: "Επάνω Δεύτερο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Πίνακας Καλοριφέρ", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Επάνω Εμπρός Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-  { τίτλος: "Αποχέτευση & Λύματα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." }
+  // ΠΕΡΙΒΑΛΛΩΝ ΧΩΡΟΣ
+  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εμπρός Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+
+  // ΚΑΤΩ ΕΠΙΠΕΔΟ
+  { τίτλος: "Ισόγεια Κεραμοσκεπή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κάτω Πίσω Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κάτω Είσοδος & Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κάτω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κάτω Κουζίνα", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Αποθήκη Κουζίνας", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κάτω Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κάτω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+
+  // ΕΣΩΤΕΡΙΚΗ ΣΚΑΛΑ
+  { τίτλος: "Εσωτερική Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+
+  // ΕΠΑΝΩ ΕΠΙΠΕΔΟ
+  { τίτλος: "Επάνω Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Ηλεκτρικός Πίνακας", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Κύριο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Δεύτερο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Πίνακας Καλοριφέρ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Εμπρός Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+
+  // ΥΠΟΔΟΜΕΣ
+  { τίτλος: "Αποχέτευση & Λύματα", περιεχόμενο: "Lorem ipsum dolor sit amet..." }
 ];
 
-/* ΛΙΣΤΑ */
+/* SEARCH FILTER */
+function φιλτραρισμένα() {
+  return ποστ.filter(p =>
+    p.τίτλος.toLowerCase().includes(query.toLowerCase())
+  );
+}
+
+/* LIST VIEW */
 function εμφάνισεΛίστα() {
   appEl.innerHTML = "";
 
-  ποστ.forEach((post) => {
-    const div = document.createElement("div");
-    div.className = "card";
+  const λίστα = φιλτραρισμένα();
 
-    div.innerHTML = `<h2>${post.τίτλος}</h2>`;
+  const sections = {
+    "ΠΕΡΙΒΑΛΛΩΝ ΧΩΡΟΣ": [],
+    "ΚΑΤΩ ΕΠΙΠΕΔΟ": [],
+    "ΕΣΩΤΕΡΙΚΑ": [],
+    "ΕΠΑΝΩ ΕΠΙΠΕΔΟ": [],
+    "ΥΠΟΔΟΜΕΣ": []
+  };
 
-    div.onclick = () => {
-      θέσηScroll = window.scrollY;
-      ενεργόΠοστ = post;
-      render();
-    };
-
-    appEl.appendChild(div);
+  λίστα.forEach(p => {
+    if (["Κύρια Είσοδος","Εμπρός Αυλή","Πίσω Αυλή"].includes(p.τίτλος)) {
+      sections["ΠΕΡΙΒΑΛΛΩΝ ΧΩΡΟΣ"].push(p);
+    }
+    else if (p.τίτλος.includes("Κάτω") || p.τίτλος.includes("Ισόγεια")) {
+      sections["ΚΑΤΩ ΕΠΙΠΕΔΟ"].push(p);
+    }
+    else if (p.τίτλος === "Εσωτερική Σκάλα") {
+      sections["ΕΣΩΤΕΡΙΚΑ"].push(p);
+    }
+    else if (p.τίτλος.includes("Επάνω")) {
+      sections["ΕΠΑΝΩ ΕΠΙΠΕΔΟ"].push(p);
+    }
+    else {
+      sections["ΥΠΟΔΟΜΕΣ"].push(p);
+    }
   });
 
-  /* restore scroll */
+  Object.entries(sections).forEach(([title, items]) => {
+    if (items.length === 0) return;
+
+    const h = document.createElement("div");
+    h.className = "section-title";
+    h.textContent = title;
+    appEl.appendChild(h);
+
+    items.forEach(post => {
+      const div = document.createElement("div");
+      div.className = "card";
+
+      div.innerHTML = `<h2>${post.τίτλος}</h2>`;
+
+      div.onclick = () => {
+        θέσηScroll = window.scrollY;
+        ενεργόΠοστ = post;
+        render();
+      };
+
+      appEl.appendChild(div);
+    });
+  });
+
   requestAnimationFrame(() => {
     window.scrollTo(0, θέσηScroll);
   });
 }
 
-/* ΠΟΛΥ ΣΕΛΙΔΑ */
+/* POST VIEW */
 function εμφάνισεΠοστ() {
   appEl.innerHTML = "";
 
@@ -88,5 +142,11 @@ function render() {
     εμφάνισεΛίστα();
   }
 }
+
+/* SEARCH INPUT */
+searchEl.addEventListener("input", (e) => {
+  query = e.target.value;
+  if (!ενεργόΠοστ) render();
+});
 
 render();
