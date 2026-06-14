@@ -3,11 +3,13 @@
     {
       "id": "overview",
       "title": "Overview",
+      "description": "The property offers approximately 182m² of internal living space on a 2,000m² site. It is intended for long-term residential use and accommodates a range of household sizes and lifestyle requirements. The following overview summarizes its spatial, functional, environmental, and operational characteristics.",
       "posts": []
     },
     {
       "id": "grounds",
       "title": "Grounds",
+      "description": "The Grounds section covers all external areas surrounding the building, including access routes, gardens, terraces, and outdoor living spaces. It documents how the site is experienced from the outside in, focusing on movement, landscaping, and the relationship between built structure and natural environment.",
       "posts": [
         { "id": "main-entrance", "title": "Main Entrance", "content": "" },
         { "id": "front-and-side-yard", "title": "Front and Side Yard", "content": "" },
@@ -21,6 +23,7 @@
     {
       "id": "lower-level",
       "title": "Lower Level",
+      "description": "The Lower Level includes the primary internal functional spaces of the building’s lower floor. This section typically contains essential living areas, services, and utility systems that support daily operation of the property, combining residential use with core infrastructure elements.",
       "posts": [
         { "id": "entrance-hallway", "title": "Entrance Hallway", "content": "" },
         { "id": "lower-living-room", "title": "Lower Living Room", "content": "" },
@@ -38,6 +41,7 @@
     {
       "id": "upper-level",
       "title": "Upper Level",
+      "description": "The Upper Level describes the main private and elevated living spaces of the property. It includes bedrooms, bathrooms, and upper circulation areas, with an emphasis on privacy, comfort, natural light, and access to views and outdoor extensions such as balconies.",
       "posts": [
         { "id": "upper-entrance-hall", "title": "Upper Entrance Hall", "content": "" },
         { "id": "upper-electrical-panel", "title": "Upper Electrical Panel", "content": "" },
@@ -53,6 +57,7 @@
     {
       "id": "outbuildings",
       "title": "Outbuildings",
+      "description": "Outbuildings refer to secondary structures and external service facilities that support the main residence. These include garages, technical rooms, storage areas, energy systems, and auxiliary installations that contribute to the property’s operational independence and functionality.",
       "posts": [
         { "id": "electricity-meter-enclosure", "title": "Electricity Meter Enclosure", "content": "" },
         { "id": "water-meter-enclosure", "title": "Water Meter Enclosure", "content": "" },
@@ -67,6 +72,7 @@
     {
       "id": "infrastructure",
       "title": "Infrastructure",
+      "description": "The Infrastructure section covers all site-wide systems that operate beneath or across the property to ensure its functionality. This includes water management, drainage, utilities, security boundaries, energy distribution, and other foundational systems that connect and sustain the entire site.",
       "posts": [
         { "id": "stormwater-drainage", "title": "Stormwater Drainage", "content": "" },
         { "id": "sewage-and-wastewater", "title": "Sewage and Wastewater", "content": "" },
