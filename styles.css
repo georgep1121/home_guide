@@ -1,6 +1,5 @@
 html {
   font-size: 18px;
-  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -15,25 +14,22 @@ body {
   background: #fff;
 
   max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
+
+  -webkit-text-size-adjust: 100%;
 }
 
-/* Header */
 h1 {
   font-size: 1.6rem;
-  font-weight: 700;
   margin: 0 0 16px 0;
 }
 
-/* Basic layout container */
 #app {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-/* Cards (για μελλοντικά modules) */
 .card {
   border: 1px solid #e5e5e5;
   border-radius: 10px;
@@ -41,21 +37,14 @@ h1 {
   background: #fafafa;
 }
 
-/* Buttons */
 button {
   font: inherit;
   padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   background: #f5f5f5;
-  cursor: pointer;
 }
 
-button:active {
-  transform: scale(0.98);
-}
-
-/* Inputs */
 input, textarea {
   font: inherit;
   padding: 10px 12px;
@@ -63,9 +52,4 @@ input, textarea {
   border: 1px solid #ccc;
   width: 100%;
   box-sizing: border-box;
-}
-
-/* Small text */
-small {
-  color: #666;
 }
