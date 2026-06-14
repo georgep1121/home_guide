@@ -1,82 +1,82 @@
 const appEl = document.getElementById("app");
 
-let activePost = null;
-let scrollPosition = 0;
+let ενεργόΠοστ = null;
+let θέσηScroll = 0;
 
-/* DATA */
-const posts = [
-  { title: "Κύρια Είσοδος", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Main entrance overview and layout." },
-  { title: "Εμπρός Αυλή", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Front yard design and structure." },
-  { title: "Πίσω Αυλή", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rear yard planning and usage." },
-  { title: "Ισόγεια Κεραμοσκεπή", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Rear patio functional space design." },
-  { title: "Πίσω Κάτω Σκάλα", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lower rear access and circulation." },
-  { title: "Κάτω Καθιστικό", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lower level living room arrangement." },
-  { title: "Εσωτερική Σκάλα", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Staircase flow and vertical connection." },
-  { title: "Επάνω Χώλ", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Upper hall circulation space." },
-  { title: "Επάνω Κύριο Υπνοδωμάτιο", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Master bedroom layout and comfort." },
-  { title: "Επάνω Καθιστικό", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Upper living area design concept." },
-  { title: "Επάνω Εμπρός Είσοδος", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Upper front access point design." },
-  { title: "Διαχείριση Απορριμάτων", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Wastewater and sewage infrastructure system." }
+/* ΔΕΔΟΜΕΝΑ */
+const ποστ = [
+  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Περιγραφή κύριας εισόδου και λειτουργίας." },
+  { τίτλος: "Μπροστινή Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Διάταξη και σχεδιασμός μπροστινής αυλής." },
+  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Χρήση και οργάνωση πίσω αυλής." },
+  { τίτλος: "Πίσω Βεράντα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Σχεδιασμός εξωτερικού καθιστικού χώρου." },
+  { τίτλος: "Κάτω Πίσω Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ροή πρόσβασης στο κάτω επίπεδο." },
+  { τίτλος: "Κάτω Σαλόνι", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Διάταξη και λειτουργία σαλονιού." },
+  { τίτλος: "Εσωτερική Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Κατακόρυφη σύνδεση ορόφων." },
+  { τίτλος: "Άνω Διάδρομος", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Κυκλοφορία στον άνω όροφο." },
+  { τίτλος: "Κύρια Κρεβατοκάμαρα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Άνεση και διάταξη χώρου ύπνου." },
+  { τίτλος: "Άνω Σαλόνι", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Χώρος χαλάρωσης στον άνω όροφο." },
+  { τίτλος: "Μπροστινή Είσοδος Ορόφου", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Πρόσβαση και αρχιτεκτονική ορόφου." },
+  { τίτλος: "Αποχέτευση & Λύματα", περιεχόμενο: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Υποδομές αποχέτευσης και διαχείρισης υδάτων." }
 ];
 
-/* LIST VIEW */
-function renderList() {
+/* ΛΙΣΤΑ */
+function εμφάνισεΛίστα() {
   appEl.innerHTML = "";
 
-  posts.forEach((post) => {
+  ποστ.forEach((post) => {
     const div = document.createElement("div");
     div.className = "card";
 
-    div.innerHTML = `<h2>${post.title}</h2>`;
+    div.innerHTML = `<h2>${post.τίτλος}</h2>`;
 
     div.onclick = () => {
-      scrollPosition = window.scrollY;
-      activePost = post;
+      θέσηScroll = window.scrollY;
+      ενεργόΠοστ = post;
       render();
     };
 
     appEl.appendChild(div);
   });
 
-  /* restore scroll position */
+  /* επαναφορά scroll */
   requestAnimationFrame(() => {
-    window.scrollTo(0, scrollPosition);
+    window.scrollTo(0, θέσηScroll);
   });
 }
 
-/* POST VIEW */
-function renderPost() {
+/* ΠΟΛΥ ΣΕΛΙΔΑ */
+function εμφάνισεΠοστ() {
   appEl.innerHTML = "";
 
   const div = document.createElement("div");
   div.className = "post-view";
 
   div.innerHTML = `
-    <h2>${activePost.title}</h2>
-    <p>${activePost.content}</p>
+    <h2>${ενεργόΠοστ.τίτλος}</h2>
+    <p>${ενεργόΠοστ.περιεχόμενο}</p>
   `;
 
-  const back = document.createElement("button");
-  back.className = "back-btn";
-  back.textContent = "Back";
+  const πίσω = document.createElement("button");
+  πίσω.className = "back-btn";
+  πίσω.textContent = "Πίσω";
 
-  back.onclick = () => {
-    activePost = null;
+  πίσω.onclick = () => {
+    ενεργόΠοστ = null;
     render();
   };
 
-  div.appendChild(back);
+  div.appendChild(πίσω);
   appEl.appendChild(div);
 
   window.scrollTo(0, 0);
 }
 
-/* MAIN RENDER */
+/* RENDER */
 function render() {
-  if (activePost) {
-    renderPost();
+  if (ενεργόΠοστ) {
+    εμφάνισεΠοστ();
   } else {
-    renderList();
+    εμφάνισεΛίστα();
   }
 }
 
