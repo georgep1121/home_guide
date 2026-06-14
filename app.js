@@ -2,20 +2,34 @@ const categoriesEl = document.getElementById("categories");
 const appEl = document.getElementById("app");
 
 let data = null;
-let activeCategory = null;
+let activeCategory = "All";
 let activePost = null;
 
-/* Render categories (fixed order) */
+/* RENDER CATEGORIES */
 function renderCategories() {
   categoriesEl.innerHTML = "";
 
+  // ALL button first
+  const allBtn = document.createElement("button");
+  allBtn.className = "category-btn" + (activeCategory === "All" ? " active" : "");
+  allBtn.textContent = "All";
+
+  allBtn.onclick = () => {
+    activeCategory = "All";
+    activePost = null;
+    render();
+  };
+
+  categoriesEl.appendChild(allBtn);
+
+  // other categories in fixed order
   data.categories.forEach(cat => {
     const btn = document.createElement("button");
-    btn.className = "category-btn";
+    btn.className = "category-btn" + (activeCategory === cat.name ? " active" : "");
     btn.textContent = cat.name;
 
     btn.onclick = () => {
-      activeCategory = cat;
+      activeCategory = cat.name;
       activePost = null;
       render();
     };
@@ -24,11 +38,23 @@ function renderCategories() {
   });
 }
 
-/* Render list of posts in category */
-function renderCategoryView() {
+/* GET POSTS BASED ON CATEGORY */
+function getPosts() {
+  if (activeCategory === "All") {
+    return data.categories.flatMap(cat => cat.posts);
+  }
+
+  const category = data.categories.find(c => c.name === activeCategory);
+  return category ? category.posts : [];
+}
+
+/* RENDER LIST VIEW */
+function renderListView() {
   appEl.innerHTML = "";
 
-  activeCategory.posts.forEach(post => {
+  const posts = getPosts();
+
+  posts.forEach(post => {
     const div = document.createElement("div");
     div.className = "card";
 
@@ -43,7 +69,7 @@ function renderCategoryView() {
   });
 }
 
-/* Render single post */
+/* RENDER POST VIEW */
 function renderPostView() {
   appEl.innerHTML = "";
 
@@ -68,22 +94,18 @@ function renderPostView() {
   appEl.appendChild(div);
 }
 
-/* Main render */
+/* MAIN RENDER */
 function render() {
-  if (!activeCategory) {
-    activeCategory = data.categories[0];
-  }
-
   renderCategories();
 
   if (activePost) {
     renderPostView();
   } else {
-    renderCategoryView();
+    renderListView();
   }
 }
 
-/* Load data */
+/* LOAD DATA */
 fetch("data.json")
   .then(res => res.json())
   .then(json => {
