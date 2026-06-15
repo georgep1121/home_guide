@@ -5,24 +5,10 @@ let θέσηScroll = 0;
 
 /* ΔΕΔΟΜΕΝΑ */
 const ποστ = [
-  // ΠΕΡΙΒΑΛΛΩΝ ΧΩΡΟΣ
-  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Εμπρός Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Μετρητής ΔΕΔΔΗΕ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Κεντρικός Ηλεκτρικός Πίνακας", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Αναμονή Φορτιστή EV 230/400V", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Μετρητής ΔΕΥΑΘ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Λεβητοστάσιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Σκέπαστρο Αυτοκινήτου", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Αναμονή Φορτιστή EV 230V", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Εξωτερική Τραπεζαρία", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Εξωτερική Κουζίνα", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Εξωτερική Αποθήκη", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Δημοτικοί Κάδοι Αποκομιδής", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
 
   // ΚΑΤΩ ΕΠΙΠΕΔΟ
-  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Ισόγεια Κεραμοσκεπή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερικός Φωτισμός", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Κάτω Πίσω Σκάλα", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Κάτω Είσοδος & Χώλ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Κάτω Καθιστικό", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
@@ -40,6 +26,7 @@ const ποστ = [
   { τίτλος: "Επάνω Ηλεκτρικός Πίνακας", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Επάνω Κύριο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Μπαλκόνι Κύριου Δωματίου", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερικός Φωτισμός", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Επάνω Δεύτερο Δωμάτιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Κλιματισμός Δωματίων", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Επάνω Μπάνιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
@@ -49,10 +36,33 @@ const ποστ = [
   { τίτλος: "Επάνω Θερμοστάτης", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "LAN Gateway", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
   { τίτλος: "Επάνω Αναμονή Κουζίνας", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
-  { τίτλος: "Επάνω Εμπρός Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet..." }
+  { τίτλος: "Επάνω Κύριο Μπαλκόνι", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερικός Φωτισμός", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Επάνω Εμπρός Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+
+  // ΠΕΡΙΒΑΛΛΩΝ ΧΩΡΟΣ
+  { τίτλος: "Κύρια Είσοδος", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εμπρός Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερικός Φωτισμός", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Μετρητής ΔΕΔΔΗΕ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Κεντρικός Ηλεκτρικός Πίνακας", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Αναμονή Φορτιστή EV 230/400V", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Μετρητής ΔΕΥΑΘ", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Αποθήκη Δομικών Υλικών", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Λεβητοστάσιο", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Σκέπαστρο Αυτοκινήτου", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Αναμονή Φορτιστή EV 230V", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερική Τραπεζαρία", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερική Κουζίνα", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Εξωτερική Αποθήκη", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Πίσω Αυλή", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Διαχείριση Λυμάτων", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Πίσω Χωράφι", περιεχόμενο: "Lorem ipsum dolor sit amet..." },
+  { τίτλος: "Δημοτικοί Κάδοι Αποκομιδής", περιεχόμενο: "Lorem ipsum dolor sit amet..." }
 ];
 
-/* LIST */
+/* LIST + POST LOGIC (ίδιο όπως πριν) */
+
 function εμφάνισεΛίστα() {
   appEl.innerHTML = "";
 
@@ -68,7 +78,8 @@ function εμφάνισεΛίστα() {
       "Κεντρικός Ηλεκτρικός Πίνακας","Αναμονή Φορτιστή EV 230/400V",
       "Μετρητής ΔΕΥΑΘ","Λεβητοστάσιο","Σκέπαστρο Αυτοκινήτου",
       "Αναμονή Φορτιστή EV 230V","Εξωτερική Τραπεζαρία","Εξωτερική Κουζίνα",
-      "Εξωτερική Αποθήκη","Δημοτικοί Κάδοι Αποκομιδής"
+      "Εξωτερική Αποθήκη","Δημοτικοί Κάδοι Αποκομιδής","Αποθήκη Δομικών Υλικών",
+      "Πίσω Αυλή","Διαχείριση Λυμάτων","Πίσω Χωράφι"
     ].includes(p.τίτλος)) {
       sections["ΠΕΡΙΒΑΛΛΩΝ ΧΩΡΟΣ"].push(p);
     }
@@ -91,7 +102,6 @@ function εμφάνισεΛίστα() {
     items.forEach(post => {
       const div = document.createElement("div");
       div.className = "card";
-
       div.innerHTML = `<h2>${post.τίτλος}</h2>`;
 
       div.onclick = () => {
@@ -109,7 +119,6 @@ function εμφάνισεΛίστα() {
   });
 }
 
-/* POST */
 function εμφάνισεΠοστ() {
   appEl.innerHTML = "";
 
@@ -136,7 +145,6 @@ function εμφάνισεΠοστ() {
   window.scrollTo(0, 0);
 }
 
-/* RENDER */
 function render() {
   if (ενεργόΠοστ) εμφάνισεΠοστ();
   else εμφάνισεΛίστα();
