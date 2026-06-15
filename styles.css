@@ -16,18 +16,8 @@ body {
 }
 
 .header h1 {
-  margin: 0 0 10px 0;
+  margin: 0;
   font-size: 26px;
-}
-
-/* SEARCH (μεσαίο, καθαρό) */
-.search {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 12px;
-  outline: none;
 }
 
 /* LIST */
@@ -44,7 +34,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* CARDS (mobile friendly) */
+/* CARDS */
 .card {
   background: white;
   padding: 18px;
@@ -82,7 +72,7 @@ body {
   line-height: 1.6;
 }
 
-/* BACK BUTTON (mobile friendly sticky feel) */
+/* BACK BUTTON */
 .back-btn {
   margin-top: 20px;
   padding: 12px 14px;
@@ -94,7 +84,7 @@ body {
   width: 100%;
 }
 
-/* MOBILE OPTIMIZATION */
+/* MOBILE */
 @media (max-width: 600px) {
   .header h1 {
     font-size: 22px;
