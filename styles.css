@@ -25,7 +25,7 @@ body {
   padding: 10px 12px;
 }
 
-/* SECTION TITLE (πιο manual style, πιο compact) */
+/* SECTION TITLE (manual / compact) */
 .section-title {
   margin: 14px 0 6px;
   font-size: 13px;
@@ -35,15 +35,14 @@ body {
   text-transform: uppercase;
 }
 
-/* CARD (πιο πυκνό, manual feel) */
+/* CARD */
 .card {
   background: white;
-  padding: 14px 14px;
+  padding: 14px;
   border-radius: 10px;
   margin-bottom: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   cursor: pointer;
-  transition: transform 0.05s ease;
 }
 
 .card:active {
@@ -55,7 +54,7 @@ body {
   font-size: 17px;
 }
 
-/* POST VIEW */
+/* POST */
 .post-view {
   background: white;
   padding: 16px;
