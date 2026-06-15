@@ -7,7 +7,7 @@ body {
 
 /* HEADER */
 .header {
-  padding: 16px;
+  padding: 14px 16px;
   background: white;
   position: sticky;
   top: 0;
@@ -17,53 +17,54 @@ body {
 
 .header h1 {
   margin: 0;
-  font-size: 26px;
+  font-size: 24px;
 }
 
-/* LIST */
+/* APP */
 .app {
-  padding: 14px;
+  padding: 10px 12px;
 }
 
-/* SECTION HEADERS */
+/* SECTION TITLE (πιο manual style, πιο compact) */
 .section-title {
-  margin: 18px 0 10px;
-  font-size: 16px;
-  font-weight: bold;
-  color: #444;
-  letter-spacing: 0.5px;
+  margin: 14px 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #555;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
 }
 
-/* CARDS */
+/* CARD (πιο πυκνό, manual feel) */
 .card {
   background: white;
-  padding: 18px;
-  border-radius: 12px;
-  margin-bottom: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 14px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
   cursor: pointer;
   transition: transform 0.05s ease;
 }
 
 .card:active {
-  transform: scale(0.98);
+  transform: scale(0.99);
 }
 
 .card h2 {
   margin: 0;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* POST VIEW */
 .post-view {
   background: white;
-  padding: 18px;
+  padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 
 .post-view h2 {
-  font-size: 22px;
+  font-size: 21px;
   margin-top: 0;
 }
 
@@ -72,13 +73,13 @@ body {
   line-height: 1.6;
 }
 
-/* BACK BUTTON */
+/* BACK */
 .back-btn {
-  margin-top: 20px;
+  margin-top: 18px;
   padding: 12px 14px;
   border: 1px solid #ccc;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
   width: 100%;
@@ -87,11 +88,11 @@ body {
 /* MOBILE */
 @media (max-width: 600px) {
   .header h1 {
-    font-size: 22px;
+    font-size: 21px;
   }
 
   .card h2 {
-    font-size: 17px;
+    font-size: 16px;
   }
 
   .post-view p {
