@@ -12,33 +12,78 @@ body {
 }
 
 /* HERO */
-.hero {
-    margin-bottom: 24px;
-}
-
 .hero h1 {
     font-size: 1.8rem;
-    margin: 0;
+    margin-bottom: 6px;
 }
 
 .sub {
     opacity: 0.7;
-    margin-top: 6px;
 }
 
-.meta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 12px;
+/* CHIPS */
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 16px;
+}
+
+@media (min-width: 900px) {
+    .meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.chip {
+    background: #1a1a1d;
+    padding: 10px 12px;
+    border-radius: 12px;
     font-size: 0.9rem;
-    opacity: 0.85;
 }
 
-/* GALLERY */
+/* INSPECTION */
+.inspection {
+    margin-top: 26px;
+}
+
+.rating {
+    background: #1a1a1d;
+    padding: 16px;
+    border-radius: 14px;
+    margin-top: 10px;
+}
+
+.score {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* GALLERY (masonry) */
 .gallery {
     columns: 1;
     column-gap: 14px;
+    margin-top: 26px;
+}
+
+@media (min-width: 600px) {
+    .gallery { columns: 2; }
+}
+
+@media (min-width: 900px) {
+    .gallery { columns: 3; }
+}
+
+@media (min-width: 1200px) {
+    .gallery { columns: 4; }
+}
+
+@media (min-width: 1500px) {
+    .gallery { columns: 5; }
+}
+
+@media (min-width: 1800px) {
+    .gallery { columns: 6; }
 }
 
 /* CARD */
@@ -48,14 +93,9 @@ body {
     margin-bottom: 14px;
     text-decoration: none;
     color: inherit;
+    background: #1a1a1d;
     border-radius: 14px;
     overflow: hidden;
-    background: #1a1a1d;
-    transition: transform 0.15s ease;
-}
-
-.card:hover {
-    transform: scale(1.01);
 }
 
 .card img {
@@ -65,39 +105,5 @@ body {
 
 .card span {
     display: block;
-    padding: 10px 12px;
-    font-size: 0.95rem;
-}
-
-/* RESPONSIVE COLUMNS */
-
-/* mobile → 1 column */
-@media (min-width: 600px) {
-    .gallery {
-        columns: 2;
-    }
-}
-
-@media (min-width: 900px) {
-    .gallery {
-        columns: 3;
-    }
-}
-
-@media (min-width: 1100px) {
-    .gallery {
-        columns: 4;
-    }
-}
-
-@media (min-width: 1400px) {
-    .gallery {
-        columns: 5;
-    }
-}
-
-@media (min-width: 1700px) {
-    .gallery {
-        columns: 6;
-    }
+    padding: 10px;
 }
