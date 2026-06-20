@@ -39,7 +39,29 @@ body {
   transform: scale(1.1);
 }
 
+.menu {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+  background: #fff;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #111;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.15s ease;
+}
+
+.menu a:hover {
+  background: #f0f0f0;
+}
+
 /* κείμενο κάτω από σημαία */
+
 .item div {
   margin-top: 10px;
   font-size: 16px;
