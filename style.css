@@ -11,30 +11,36 @@ body {
   align-items: center;
 }
 
+/* βασικό layout */
 .flags {
   display: flex;
   gap: 60px;
-  text-align: center;
 }
 
-.flags a {
+/* κάθε επιλογή σαν κάθετο block */
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-decoration: none;
   color: #111;
 }
 
-.flags img {
+/* εικόνα σημαίας */
+.item img {
   width: 90px;
   height: 90px;
   display: block;
-  margin: 0 auto;
   transition: transform 0.15s ease;
 }
 
-.flags a:hover img {
+/* hover effect */
+.item:hover img {
   transform: scale(1.1);
 }
 
-.flags div {
+/* κείμενο κάτω από σημαία */
+.item div {
   margin-top: 10px;
   font-size: 16px;
 }
