@@ -3,69 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="title"></title>
+  <title>Choose Language</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header class="navbar">
-    <div class="logo">MySite</div>
+  <div class="container">
 
-    <div class="nav-right">
-      <button onclick="setLang('el')">GR</button>
-      <button onclick="setLang('en')">EN</button>
+    <div class="flags">
+      <a href="greek.html" title="Ελληνικά">
+        🇬🇷
+      </a>
+
+      <a href="english.html" title="English">
+        🇬🇧
+      </a>
     </div>
-  </header>
 
-  <section class="hero">
-    <h1 id="hero-title"></h1>
-    <p id="hero-text"></p>
-    <a class="btn" href="#about" id="hero-btn"></a>
-  </section>
+    <div class="text">
+      <p>Ελληνικά</p>
+      <p>English</p>
+    </div>
 
-  <section class="section" id="about">
-    <h2 id="about-title"></h2>
-    <p id="about-text"></p>
-  </section>
-
-  <script>
-    const translations = {
-      el: {
-        title: "Το Site μου",
-        heroTitle: "Καλώς ήρθες στο site μου",
-        heroText: "Αυτό είναι ένα δυναμικό website με πλήρη αλλαγή γλώσσας.",
-        heroBtn: "Μάθε περισσότερα",
-        aboutTitle: "Σχετικά",
-        aboutText: "Εδώ γράφεις το περιεχόμενο σου στα ελληνικά."
-      },
-      en: {
-        title: "My Website",
-        heroTitle: "Welcome to my website",
-        heroText: "This is a fully dynamic multilingual website.",
-        heroBtn: "Learn more",
-        aboutTitle: "About",
-        aboutText: "Here you write your content in English."
-      }
-    };
-
-    function setLang(lang) {
-      const t = translations[lang];
-
-      document.getElementById("title").innerText = t.title;
-      document.getElementById("hero-title").innerText = t.heroTitle;
-      document.getElementById("hero-text").innerText = t.heroText;
-      document.getElementById("hero-btn").innerText = t.heroBtn;
-      document.getElementById("about-title").innerText = t.aboutTitle;
-      document.getElementById("about-text").innerText = t.aboutText;
-
-      localStorage.setItem("lang", lang);
-    }
-
-    // auto-load language
-    setLang(localStorage.getItem("lang") || "el");
-  </script>
+  </div>
 
 </body>
 </html>
