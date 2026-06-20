@@ -1,68 +1,31 @@
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background: #fff;
-}
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Language</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-.wrap {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+<body>
 
-/* βασικό layout */
-.flags {
-  display: flex;
-  gap: 60px;
-}
+  <div class="wrap">
 
-/* κάθε επιλογή σαν κάθετο block */
-.item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-decoration: none;
-  color: #111;
-}
+    <div class="flags">
 
-/* εικόνα σημαίας */
-.item img {
-  width: 90px;
-  height: 90px;
-  display: block;
-  transition: transform 0.15s ease;
-}
+      <a class="item" href="greek.html">
+        <img src="https://openmoji.org/data/color/svg/1F1EC-1F1F7.svg" alt="Greek">
+        <div>Ελληνικά</div>
+      </a>
 
-/* hover effect */
-.item:hover img {
-  transform: scale(1.1);
-}
+      <a class="item" href="english.html">
+        <img src="https://openmoji.org/data/color/svg/1F1EC-1F1E7.svg" alt="English">
+        <div>Αγγλικά</div>
+      </a>
 
-.menu {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  padding: 20px;
-  background: #fff;
-}
+    </div>
 
-.menu a {
-  text-decoration: none;
-  color: #111;
-  font-size: 16px;
-  padding: 6px 10px;
-  border-radius: 6px;
-  transition: background 0.15s ease;
-}
+  </div>
 
-.menu a:hover {
-  background: #f0f0f0;
-}
-
-/* κείμενο κάτω από σημαία */
-
-.item div {
-  margin-top: 10px;
-  font-size: 16px;
-}
+</body>
+</html>
