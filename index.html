@@ -3,14 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
+  <title id="title"></title>
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
   <header class="navbar">
     <div class="logo">MySite</div>
 
@@ -20,51 +19,52 @@
     </div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
-
-    <!-- GREEK -->
-    <div id="el">
-      <h1>Καλώς ήρθες στο site μου</h1>
-      <p>Αυτό είναι ένα απλό αλλά “κανονικό” website με αλλαγή γλώσσας χωρίς reload.</p>
-      <a class="btn" href="#about">Μάθε περισσότερα</a>
-    </div>
-
-    <!-- ENGLISH -->
-    <div id="en" style="display:none;">
-      <h1>Welcome to my website</h1>
-      <p>This is a simple but professional-looking website with instant language switching.</p>
-      <a class="btn" href="#about">Learn more</a>
-    </div>
-
+    <h1 id="hero-title"></h1>
+    <p id="hero-text"></p>
+    <a class="btn" href="#about" id="hero-btn"></a>
   </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-
-    <div id="el-about">
-      <h2>Σχετικά</h2>
-      <p>Εδώ μπορείς να γράψεις πληροφορίες για σένα ή το project σου.</p>
-    </div>
-
-    <div id="en-about" style="display:none;">
-      <h2>About</h2>
-      <p>Here you can write information about yourself or your project.</p>
-    </div>
-
+  <section class="section" id="about">
+    <h2 id="about-title"></h2>
+    <p id="about-text"></p>
   </section>
 
   <script>
+    const translations = {
+      el: {
+        title: "Το Site μου",
+        heroTitle: "Καλώς ήρθες στο site μου",
+        heroText: "Αυτό είναι ένα δυναμικό website με πλήρη αλλαγή γλώσσας.",
+        heroBtn: "Μάθε περισσότερα",
+        aboutTitle: "Σχετικά",
+        aboutText: "Εδώ γράφεις το περιεχόμενο σου στα ελληνικά."
+      },
+      en: {
+        title: "My Website",
+        heroTitle: "Welcome to my website",
+        heroText: "This is a fully dynamic multilingual website.",
+        heroBtn: "Learn more",
+        aboutTitle: "About",
+        aboutText: "Here you write your content in English."
+      }
+    };
+
     function setLang(lang) {
+      const t = translations[lang];
 
-      // hero
-      document.getElementById('el').style.display = (lang === 'el') ? 'block' : 'none';
-      document.getElementById('en').style.display = (lang === 'en') ? 'block' : 'none';
+      document.getElementById("title").innerText = t.title;
+      document.getElementById("hero-title").innerText = t.heroTitle;
+      document.getElementById("hero-text").innerText = t.heroText;
+      document.getElementById("hero-btn").innerText = t.heroBtn;
+      document.getElementById("about-title").innerText = t.aboutTitle;
+      document.getElementById("about-text").innerText = t.aboutText;
 
-      // about
-      document.getElementById('el-about').style.display = (lang === 'el') ? 'block' : 'none';
-      document.getElementById('en-about').style.display = (lang === 'en') ? 'block' : 'none';
+      localStorage.setItem("lang", lang);
     }
+
+    // auto-load language
+    setLang(localStorage.getItem("lang") || "el");
   </script>
 
 </body>
