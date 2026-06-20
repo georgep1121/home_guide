@@ -1,36 +1,40 @@
 body {
   margin: 0;
-  background: #ffffff;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color: #111;
+  background: #fff;
 }
 
-.container {
+.wrap {
   height: 100vh;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
 .flags {
-  font-size: 70px;
   display: flex;
-  gap: 40px;
+  gap: 60px;
+  text-align: center;
 }
 
 .flags a {
   text-decoration: none;
+  color: #111;
+}
+
+.flags img {
+  width: 90px;
+  height: 90px;
+  display: block;
+  margin: 0 auto;
   transition: transform 0.15s ease;
 }
 
-.flags a:hover {
-  transform: scale(1.15);
+.flags a:hover img {
+  transform: scale(1.1);
 }
 
-.text {
-  margin-top: 20px;
-  text-align: center;
+.flags div {
+  margin-top: 10px;
   font-size: 16px;
-  color: #444;
 }
